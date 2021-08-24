@@ -40,7 +40,7 @@ t1_mprage_DC_sag_HCP_256_32ch
     </tr>
 </table>
 
-
+#### Initial environment setup
 2.1. Install python 3 and dcm2bids
 In terminal, type:
 ```
@@ -75,13 +75,35 @@ Create conda environment and activate:
 conda env create -f environment.yml --prefix /storage/shared/research/cinn/2018/GUTMIC/CM_scripts/conda_env/
 
 source activate /storage/shared/research/cinn/2018/GUTMIC/CM_scripts/conda_env
-cd /storage/shared/research/cinn/2018/GUTMIC/
+cd /storage/shared/research/cinn/2020/gbgaba/
 ```
+
+#### If environment has already been setup
+2.1. load anaconda module
+```
+module load anaconda
+```
+
+2.2. Add path to anaconda module and activate environment
+```
+PATH=$PATH:/opt/anaconda/bin/
+export PATH
+
+source activate /storage/shared/research/cinn/2018/GUTMIC/CM_scripts/conda_env
+cd /storage/shared/research/cinn/2020/gbgaba/
+```
+
+
 2.3. Convert raw data to BIDS format with dcm2bids
 First, test that dcm2bids is working by typing
 ```
 dcm2bids --help
 ```
+Use the dcm2bids helper function to look at your json files (associated with each of your nifti files - these will be in the tmp_dcm2bids folder).
+```
+dcm2bids_helper /storage/shared/research/cinn/2020/gbgaba/raw/GBGABA_pilot2
+```
+
 Next, make sure dcm2bids_config.json contains the following:
 ```
 {
