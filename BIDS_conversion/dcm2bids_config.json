@@ -1,0 +1,104 @@
+{
+    "descriptions": [
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "ImageType":  ["ORIGINAL", "PRIMARY", "M", "NORM", "DIS2D"],
+            "SequenceName": "*tfl3d1_16ns*",
+            "SeriesDescription": "t1_mprage*"
+                    }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-rest",
+        "criteria": {
+            "SeriesDescription": "*ep2d_bold_PtoA_Resting*"
+            },
+        "sidecarChanges": {
+                "TaskName": "rest"
+            }
+        },
+        {
+        "dataType": "fmap",
+        "modalityLabel": "magnitude1",
+        
+        "criteria": {
+            "SeriesDescription": "gre_field_mapping_3x3x3", 
+            "SidecarFilename": "*_e1.*"
+            },
+        "intendedFor": 0
+        },
+        {
+        "dataType": "fmap",
+        "modalityLabel": "magnitude2",
+        
+        "criteria": {
+            "SeriesDescription": "gre_field_mapping_3x3x3", 
+            "SidecarFilename": "*_e2.*"
+            },
+        "intendedFor": 0
+        },
+        {
+        "dataType": "fmap",
+        "modalityLabel": "phasediff",
+        
+        "criteria": {
+            "SidecarFilename": "*_e2_ph*"
+            },
+        "intendedFor": 0
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "mp2rage",
+        "customLabels": "TI1_magnitude",
+        "criteria": {
+            "ProtocolName": "*mp2rage*",
+            "ImageType": ["ORIGINAL", "PRIMARY", "M", "ND", "NORM"],
+            "SeriesDescription": "*t1_mp2rage_sag_p3_iso_INV1*"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "mp2rage",
+        "customLabels": "TI2_magnitude",
+        "criteria": {
+            "ProtocolName": "*mp2rage*",
+            "ImageType": ["ORIGINAL", "PRIMARY", "M", "ND", "NORM"],
+            "SeriesDescription": "*t1_mp2rage_sag_p3_iso_INV2*"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "mp2rage",
+        "customLabels": "UNI",
+        "criteria": {
+            "ProtocolName": "*mp2rage*",
+            "ImageType": ["DERIVED", "PRIMARY", "M", "ND", "UNI"],
+            "SeriesDescription": "*t1_mp2rage_sag_p3_iso_UNI_Images*"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "mp2rage",
+        "customLabels": "TI1_phase",
+        "criteria": {
+            "ProtocolName": "*mp2rage*",
+            "ImageType": ["ORIGINAL", "PRIMARY", "P", "ND", "PHASE"],
+            "SeriesDescription": "*t1_mp2rage_sag_p3_iso_RR_INV1*"
+            }
+        },
+        {
+        "dataType": "anat",
+        "modalityLabel": "mp2rage",
+        "customLabels": "TI2_phase",
+        "criteria": {
+            "ProtocolName": "*mp2rage*",
+            "ImageType": ["ORIGINAL", "PRIMARY", "P", "ND", "PHASE"],
+            "SeriesDescription": "*t1_mp2rage_sag_p3_iso_RR_INV2*"
+            }
+        }
+
+    ]
+}
