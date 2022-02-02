@@ -91,7 +91,7 @@ PATH=$PATH:/opt/anaconda/bin/
 export PATH
 
 source activate /storage/shared/research/cinn/2020/gbgaba/scripts/conda_env
-cd /storage/shared/research/cinn/2020/gbgaba/
+cd /storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 ```
 
 
@@ -253,7 +253,7 @@ python3.7 2.1_validate_bids.py
 ```
 OR go to https://bids-standard.github.io/bids-validator/ and import bids parent folder (folder containing all subjects)
 
-2.5 Finalise folder structure, including making directories (mkdir) for analysis
+2.5 Finalised folder structure, including directories for analyses
 ```
 /storage/shared/research/cinn/2020/gbgaba/
    GBGABA_BIDS/
