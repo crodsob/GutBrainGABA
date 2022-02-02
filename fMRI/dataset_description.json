@@ -1,0 +1,19 @@
+{
+  "Name": "fMRI output",
+  "BIDSVersion": "1.4.0",
+  "DatasetType": "derivative",
+  "GeneratedBy": [
+    {
+      "Name": "FSL, Manual",      
+      "Version": "6.0",
+      "CodeURL": "https://github.com/CarolynMcNabb/GBGABA_pilot_analysis.git"
+    }
+  ],
+  "SourceDatasets": [
+    {
+      "DOI": "doi:10.18112/openneuro.ds000114.v1.0.1",
+      "URL": "https://openneuro.org/datasets/ds000114/versions/1.0.1",
+      "Version": "1.0.1"
+    }
+  ]
+}

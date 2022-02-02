@@ -1,0 +1,34 @@
+cd /storage/shared/research/cinn/2020/gbgaba/temp
+subjects=( $(ls -d sub-* )) 
+
+for sub in ${!subjects[@]}; do 
+    i=${subjects[$sub]}
+    s=${i//$"sub-"/}
+    echo $sub
+    
+    cd ./${i}
+    sessions=( $(ls -d ses-*))
+    for visit in ${!sessions[@]}; do
+        ses=${sessions[$visit]}
+    echo $ses
+            if [ ${ses} = "ses-01" ]; then 
+                echo "Printing ${ses} path to melodic_inputlist_WP1"
+            
+            elif [ ${ses} != "ses-01" ]; then 
+                echo "Printing ${ses} path to melodic_inputlist_WP2"
+            
+            fi
+            if [ ${ses} = "ses-01" ] && [ ${#sessions[@]} > 1 ]; then 
+              echo "Printing ${ses} path to melodic_inputlist_WP2"
+        
+            fi
+     done
+done
+
+dim=30
+ics="$((dim-1))"
+
+
+for ic in $( seq 00 ${ics} ) ; do
+echo `printf "%02d\n" $ic`
+done

@@ -1,0 +1,5 @@
+popp --tr=2.16 --cardiac=1 --resp=2 --trigger=3 --samplingrate=1000 -i sub-W0001_ses-01_task-rest_physio_clean.txt -o sub-W0001_ses-01
+pnm_evs --slicetiming=/storage/shared/research/cinn/2020/gbgaba/scripts/slice_timing.txt --tr=2.16 -i sub-W0001_ses-01_FEATpreproc.feat/filtered_func_data.nii.gz  -o sub-W0001_ses-01_pnmevs -c sub-W0001_ses-01_card.txt -r sub-W0001_ses-01_resp.txt
+
+
+pnm_evs --slicetiming=/storage/shared/research/cinn/2020/gbgaba/scripts/slice_timing.txt --tr=2.16 -i sub-W1001_ses-01_FEATpreproc.feat/filtered_func_data.nii.gz  -o sub-W1001_ses-01_pnmevs -c sub-W1001_ses-01_card.txt -r sub-W1001_ses-01_resp.txt
