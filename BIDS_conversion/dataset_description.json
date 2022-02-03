@@ -1,0 +1,23 @@
+{
+  "Name": "Gut Brain GABA study",
+  "BIDSVersion": "1.6.0",
+  "DatasetType": "raw",
+  "License": "CC-BY",
+  "Authors": [
+    "Carolyn McNabb",
+    "Bhisma Chakrabarti"
+  ],
+  "Acknowledgements": "Special thanks to Dr Georg Oeltzschner, Johns Hopkins, for help with MR Spectroscopy and Osprey analysis issues; Dr Tobias Wood, Dr David Carmichael and Dr Ayse Sila Dokumaci, King's College London, for help with MP2RAGE sequence issues; Dr Shan Shen, University of Reading, for help with MRI protocol development.",
+  "HowToAcknowledge": "Please cite this paper: ",
+  "Funding": [
+    "European Research Council, Grant Number: "
+  ],
+  "EthicsApprovals": [
+    "University of Reading Research Ethics Committee (Protocol 20/37)"
+  ],
+  "ReferencesAndLinks": [""
+    
+  ],
+  "DatasetDOI": "",
+  "HEDVersion": ""
+}
