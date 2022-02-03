@@ -194,12 +194,6 @@ In General Linear Model window:
 1. Change number of F tests to 0
 1. Contrasts should be set up as follows:
 <table>
-  <tr>  
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-  </tr>
   <tr>
       <td>otus+</td>
       <td>1</td>
