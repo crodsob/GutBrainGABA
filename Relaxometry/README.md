@@ -199,7 +199,7 @@ In General Linear Model window:
       <td></td>
       <td></td>
       <td></td>
-    </tr>
+  </tr>
   <tr>
       <td>otus+</td>
       <td>1</td>
