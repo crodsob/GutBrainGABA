@@ -209,7 +209,7 @@ In General Linear Model window:
     </tr>
 </table>
 
-1. Save as "otus" in "/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS/derivatives/relaxometry/analysis/GLMs"
+1. Save as "otus" in `/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS/derivatives/relaxometry/analysis/GLMs`
 
 1. Exit Glm GUI
 
