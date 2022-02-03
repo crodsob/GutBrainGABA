@@ -1,6 +1,6 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.8_dualregression.sh runs FSL's dual regression using the group-level independent components created with MELODIC
 #Usage: dual_regression <group_IC_maps> <des_norm> <design.mat> <design.con> <n_perm> <output_directory> <input1> <input2> <input3>
 
@@ -9,7 +9,7 @@
 module load fsl6.0 #load fsl - if you are using a machine other than the virtual machine at University of Reading, you can comment out this line.
 
 #define paths
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 analysis_path=${bids_path}/derivatives/fMRI/analysis
 script_path=/storage/shared/research/cinn/2020/gbgaba/scripts
 GLM_path=${script_path}/GLMs

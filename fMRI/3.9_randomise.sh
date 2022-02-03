@@ -1,6 +1,6 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.9_randomise.sh will use FSL's randomise function to run nonparametric permutation tests on the dual regression output using the GLM files available in the GLMs directory (created using FSL's Glm tool). This will use the dual regression stage 2 files within a dual regression directory to produce F test results for each independent component
 #F-test alpha values should be determined using some kind of correction for multiple comparisons (i.e. FDR or bonferroni) using only the ICs you are interested in.
 #adapt numbers below to include all ICs
@@ -10,7 +10,7 @@
 module load fsl6.0 #load fsl - if you are using a machine other than the virtual machine at University of Reading, you can comment out this line.
 
 #define paths
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 analysis_path=${bids_path}/derivatives/fMRI/analysis
 script_path=/storage/shared/research/cinn/2020/gbgaba/scripts

@@ -1,12 +1,12 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
-#3.4.4_symlink.sh will rename the old filtered_func_data file so that a new symbolic link with this name can be created - pointing to the fixed filtered_func_data_clean.nii.gz file
+#GBGABA STUDY ANALYSIS 
+#3.4.6_symlink.sh will rename the old filtered_func_data file so that a new symbolic link with this name can be created - pointing to the fixed filtered_func_data_clean.nii.gz file
 
 #!/bin/bash
 
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 

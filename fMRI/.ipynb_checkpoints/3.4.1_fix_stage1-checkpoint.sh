@@ -1,11 +1,11 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.4.1_fix_stage1.sh will run the first stage of FSL's FIX for those subjects with resting-state fMRI data.
 #!/bin/bash
 
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 

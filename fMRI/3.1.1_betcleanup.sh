@@ -1,6 +1,6 @@
 #Carolyn McNabb 
 #August 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.1.1_betcleanup.sh performs brain extraction using centre of gravity coordinates 
 #for those ppts who were previously identified to have poor brain extraction in 3.1_brainextraction.sh.
 #Note that subjects have been entered manually into this script (line 18)
@@ -10,7 +10,7 @@
 
 module load fsl6.0 #load fsl - if you are using a machine other than the virtual machine at University of Reading, you can comment out this line.
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 cd $bids_path

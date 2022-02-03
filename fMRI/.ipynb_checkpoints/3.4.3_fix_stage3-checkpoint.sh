@@ -1,11 +1,11 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.4.3_fix_stage3.sh will run the third stage of FSL's FIX for those subjects with resting-state fMRI data. Make sure you define the threshold before running!
 #!/bin/bash
 
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 
@@ -36,7 +36,7 @@ if [ ${userinput} == "Y" ] || [ ${userinput} == "y" ]; then
         
                 echo "Running FIX stage 3 for ${i} ${ses}"         
             
-                fix -a ${derivative_path}/${i}/${ses}/func/${i}_${ses}_FEATpreproc.feat/fix4melview_FIXtask_thr${thres}.txt -m
+                fix -a ${derivative_path}/${i}/${ses}/func/${i}_${ses}_FEATpreproc.feat/fix4melview_FIX_thr${thres}.txt -m
             
             else
                 echo "Resting state fMRI data do not exist for ${i} ${ses}"

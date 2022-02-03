@@ -1,13 +1,13 @@
 #Carolyn McNabb 
 #August 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.2_fieldmap.sh creates a fieldmap for each ppt and stores in derivatives/fMRI/preprocessed/ppt/fmap folder for that ppt.
 
 #!/bin/bash
 
 module load fsl6.0 #load fsl - if you are using a machine other than the virtual machine at University of Reading, you can comment out this line.
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 cd $bids_path

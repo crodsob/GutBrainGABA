@@ -1,22 +1,19 @@
 #CMcNabb 2021
 #data setup for GLM for dti analysis
-setwd("/Volumes/GoogleDrive/My Drive/Pilot")
+setwd("/Volumes/GoogleDrive/My Drive/Pilot") #CHANGE THIS PATH TO THE MICROBIOLOGY DATA FOLDER FOR THE GBGABA STUDY
 library("Jmisc")
 library(dplyr)
 
 #read in demographic, Autism quotient and gut diversity data
-pilot_raw <- read.csv("pilot_bacteria_mrs_lcms_GenusLevel.csv", header = TRUE, na.strings=c("N.D"))
-LCMS <- pilot_raw[c("age","hand","GABA","Glutamate", "Glutamine")]
+pilot_raw <- read.csv("pilot_bacteria_mrs_lcms_GenusLevel.csv", header = TRUE, na.strings=c("N.D")) # CHANGE THIS FILE AND THE INFORMATION BELOW TO MEET YOUR REQUIREMENTS
+LCMS <- pilot_raw[c("age","GABA","Glutamate", "Glutamine")]
 
-# #read in dwi motion data
-# motion <- read.delim("G://My Drive/Diffusion/dti_motion.txt", header = F, sep = ",")
-# colnames(motion) <- c("sub", "motion_from_1st","motion_from_prev")
 
-#recode handedness from right and left to 0s and 1s
-LCMS$hand <- recode(LCMS$hand, Right = 0, Left = 1)
-
-#create dataframes for GLM, including diversity measures/Autism quotient, age, handedness and motion, then demean these values for use in FSL's randomise
+#create dataframes for GLM, including diversity measures/Autism quotient, age and motion, then demean these values for use in FSL's randomise
 LCMS <- demean(LCMS)
 
-# write GLMs to csv format
+# write GLMs to csv format without headers
 write.table(LCMS, "GLM_faecalLCMS.csv", sep=",", col.names=FALSE, row.names = FALSE)
+
+# write GLMs to csv format with headers
+write.table( LCMS, "/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/fMRI/analysis/GLMs/GLM_faecalLCMS.csv", sep=",", col.names=TRUE, row.names = FALSE)

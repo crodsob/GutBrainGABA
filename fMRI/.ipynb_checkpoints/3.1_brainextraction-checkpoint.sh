@@ -1,13 +1,13 @@
 #Carolyn McNabb 
 #August 2021
-#GUTMIC BRAIN DATA PILOT ANALYSIS 
+#Gut Brain GABA study ANALYSIS 
 #3.1_brainextraction.sh reorients structural data to normal fsl space then runs brain extraction. Output is stored in derivatives/fMRI/preprocessed/ppt/anat folder for each ppt
 
 #!/bin/bash
 
 module load fsl6.0 #load fsl - if you are using a machine other than the virtual machine at University of Reading, you can comment out this line.
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 cd $bids_path

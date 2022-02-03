@@ -1,6 +1,6 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA BRAIN DATA PILOT ANALYSIS 
+#GBGABA STUDY ANALYSIS 
 #3.7_melodic.sh runs FSL's melodic - Melodic will perform ICA on the group as a whole (i.e. all participants at once). It will create components that will be used in the dual regression.
 
 
@@ -19,7 +19,7 @@ dim=30 # number of components you want out
 
 module load fsl6.0 #load fsl - if you are using a machine other than the virtual machine at University of Reading, you can comment out this line.
 
-bids_path=/storage/shared/research/cinn/2020/gbgaba/pilot_BIDS
+bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 analysis_path=${bids_path}/derivatives/fMRI/analysis
 script_path=/storage/shared/research/cinn/2020/gbgaba/scripts
 
