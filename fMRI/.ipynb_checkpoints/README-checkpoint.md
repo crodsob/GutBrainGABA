@@ -328,7 +328,7 @@ In General Linear Model window:
 
 **For Work Package 2, the GLM will need to be set up differently to account for the repeated-measures, within-subject design. To see how this should be done, refer to the image below.**</br>
 
-![glm](supplementary_materials/GLM_longitudinalanalysis.png)</br>
+![glm](Supplementary_materials/GLM_longitudinalanalysis.png)</br>
 
 ### 3.7. Create group-level independent components using FSL's MELODIC. 
 *NOTE THIS IS SET UP FOR WP1 AND WILL NOT BE APPROPRIATE FOR WP2*
