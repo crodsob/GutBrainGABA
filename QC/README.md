@@ -16,9 +16,11 @@ In MacOS terminal, type:
 visualqc_anatomical --bids_dir=/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS --out_dir /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/anat/T1w  --id_list /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/qc_sub_list.txt --mri_name 'ses-01/anat/sub*_T1w.nii.gz' 
 ```
 
-## Check MP2RAGE anatomical data quality
+## Check magnitude and phase images for MP2RAGE anatomical data quality
 ```
-visualqc_anatomical --bids_dir=/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS --out_dir /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/anat/mp2rage  --id_list /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/qc_sub_list.txt --mri_name 'ses-01/anat/sub*_T1w.nii.gz' 
+visualqc_anatomical --bids_dir=/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS --out_dir /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/anat/mp2rage  --id_list /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/qc_sub_list.txt --mri_name 'ses-01/anat/sub*_magnitude_mp2rage.nii.gz' 
+
+visualqc_anatomical --bids_dir=/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS --out_dir /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/anat/mp2rage  --id_list /Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/QC/qc_sub_list.txt --mri_name 'ses-01/anat/sub*_phase_mp2rage.nii.gz' 
 ```
 
 
