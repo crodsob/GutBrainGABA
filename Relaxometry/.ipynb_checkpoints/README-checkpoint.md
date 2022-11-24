@@ -33,15 +33,15 @@ QUantitative Imaging Tools ([QUIT](https://quit.readthedocs.io/en/latest/index.h
 
 For my own reference, Quit toolbox is stored in:
 ```
-/Volumes/GoogleDrive/My Drive/Software/qi 
+/Users/bhismalab/Documents/GitHub
 ```
  *The following commands were run on MacOS Big Sur version 11.6*
  
 Open a bash terminal (macos terminal is fine) and modify path:
 ```
-PATH=$PATH:/Volumes/GoogleDrive/My\ Drive/Software/
+PATH=$PATH:/Users/bhismalab/Documents/GitHub
 export PATH
-PATH=$PATH:/Volumes/GoogleDrive/My\ Drive/GitHub/GutBrainGABA/Relaxometry
+PATH=$PATH:/Users/bhismalab/Documents/GitHub/GutBrainGABA/Relaxometry
 export PATH
 ```
 
