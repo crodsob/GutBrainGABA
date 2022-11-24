@@ -1,9 +1,26 @@
 # BIDS conversion instructions
+#### Claudia Rodriguez-Sobstel
+#### Adapted from Carolyn McNabb https://github.com/CarolynMcNabb/GutBrainGABA
 
-#### CAROLYN MCNABB 
-LAST UPDATED: 2 February 2022
+LAST UPDATED: 24 November 2022
 
-###  VM setup
+The first time you run these scripts, whether on the virtual machine (VM) or on MacOS, you will need to make the scripts executable. To do this, run the following command in the terminal, replacing `script_name` with the relavant script name and `path_to_script` with the relevant path to the directory where your scripts are kept. Note that this is likely to be a different path for the VM and MacOS. You only have to do this **ONCE** for each script.
+```
+chmod u+x path_to_script/script_name
+```
+
+Every time you log onto a terminal, you need to remind it where your scripts are (or you can modify your bash profile). Once again, replace `path_to_script` with your actual path. <br/>
+In the Ubuntu terminal, type:
+```
+PATH=$PATH:path_to_script
+export PATH
+```
+
+**N.B. All the paths in the scripts are specific to my own directories - the paths for the VM should be able to be used without adjusting but the MacOS paths will obviously need to be changed to match your own before continuing.** 
+
+---
+
+##  VM setup
 
 1.1. Create Vanilla VM in nutanix https://rrc.reading.ac.uk:9440/console/#login </br>
 1.2. Open VM in NoMachine by pasting IP address from Nutanix</br>
@@ -11,8 +28,9 @@ LAST UPDATED: 2 February 2022
 ```
 rm -r ~/.mozilla #to clear any open firefox applications
 ```
+--
 
-### Convert dicoms to BIDS format
+## Convert dicoms to BIDS format
 N.B. Conversion of diffusion data to BIDS format may later be updated to use ADWI-BIDS https://arxiv.org/pdf/2103.14485.pdf 
 
 BIDS filenames must follow this pattern:
@@ -42,14 +60,14 @@ t1_mprage_DC_sag_HCP_256_32ch
 </table>
 
 #### Initial environment setup
-2.1. Install python 3 and dcm2bids
+##### 2.1. Install python 3 and dcm2bids
 In terminal, type:
 ```
 module load anaconda
 sudo apt install python3-pip
 pip install dcm2bids
 ```
-2.2. Set up environment for dcm2bids 
+##### 2.2. Set up environment for dcm2bids 
 ```
 sudo apt install gedit
 gedit environment.yml 
@@ -73,25 +91,28 @@ export PATH
 
 Create conda environment and activate:
 ```
-conda env create -f environment.yml --prefix /storage/shared/research/cinn/2020/gbgaba/scripts/conda_env
+conda env create -f environment.yml --prefix /storage/shared/research/cinn/2020/gbgaba/scripts_claudia/conda_env
 
-source activate /storage/shared/research/cinn/2020/gbgaba/scripts/conda_env
+source activate /storage/shared/research/cinn/2020/gbgaba/scripts_claudia/conda_env
 cd /storage/shared/research/cinn/2020/gbgaba/
 ```
 
 #### If environment has already been setup
-2.1. load anaconda module
+##### 2.1. Add path to dcm2bids conversion script
 ```
-module load anaconda
-```
-
-2.2. Add path to anaconda module and activate environment
-```
-PATH=$PATH:/opt/anaconda/bin/
+PATH=$PATH:/storage/shared/research/cinn/2020/gbgaba/scripts_claudia/
 export PATH
+```
 
-source activate /storage/shared/research/cinn/2020/gbgaba/scripts/conda_env
-cd /storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
+##### 2.2. Run the dcm2bids conversion script
+The script will:
+- activate the conda environment, 
+- test whether dcm2bids is working, and
+- convert the raw data to BIDS format.
+
+Note: You will be prompted to enter the participant ID and session number. 
+```
+0.0_dcm2bids.sh
 ```
 
 
