@@ -1,6 +1,6 @@
 #Carolyn McNabb 
 #November 2021
-#GBGABA STUDY ANALYSIS 
+#GBGABA BRAIN DATA ANALYSIS 
 #1.4.0_mkdir_template.sh will copy the brain-extracted T1/UNI images from selected participants (which you need to define in the script below)
 #!/bin/bash
 
@@ -12,7 +12,7 @@ mkdir -p ${template_path}
 
 cd ${derivative_path}
 
-for sub in 004 005 008; do #list the participants you want to include in the template here
+for sub in 003 004 005 008; do #list the participants you want to include in the template here
     i=$(echo "sub-${sub}")
     
     cd ${derivative_path}/${i}
@@ -26,3 +26,5 @@ for sub in 004 005 008; do #list the participants you want to include in the tem
 
     done
 done
+
+### claudia note: figure out whether only need to copy T1 or UNI image? 
