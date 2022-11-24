@@ -1,3 +1,12 @@
+% Carolyn McNabb
+% September 2021
+
+% GBGABA BRAIN DATA ANALYSIS
+% group_analysis_MC.m will prepare for group pre-processing of motorcortex MRS data.
+% Essentially, this writes a function to describe an Osprey job. 
+% This specifies which MRS metabolite, water, and structural data to use, 
+% where to store the pre-processed data, and stipulates additional processing options. 
+
 %% GroupAnalysis.m
 %   This function describes an Osprey job defined in a MATLAB script.
 %
@@ -154,7 +163,7 @@ clear files files_ref files_w files_nii
 % up the jobFile for your own data you can set a direct path to your data
 % folder e.g., data_folder = /Volumes/MyProject/data/'
 
-data_folder = '/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS'; 
+data_folder = '/Volumes/research/cinn/2020/gbgaba/GBGABA_BIDS'; 
 
 % The following lines perform an automated set-up of the jobFile which
 % takes advatage of the BIDS foramt. If you are not using BIDS (highly
@@ -217,7 +226,7 @@ end
 % the number of included groups. If no group is supplied the data will be
 % treated as one group. (You can always use the direct path)
 
-file_stat = fullfile('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/GLMs/GLM_faecalLCMS.csv');
+%file_stat = fullfile('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/GLMs/GLM_faecalLCMS.csv');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 5. SPECIFY OUTPUT FOLDER %%
@@ -227,6 +236,6 @@ file_stat = fullfile('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS
 
 % Specify output folder (you can always use the direct path)
 % (MANDATORY)
-outputFolder = '/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/group_analysis_MC';
+outputFolder = '/Volumes/research/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/group_analysis_MC';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

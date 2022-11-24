@@ -1,21 +1,23 @@
-%OSPREY PATH SETUP
-%CAROLYN MCNABB 2021
+% Carolyn McNabb
+% September 2021
 
-%change into top dir so you can add matlab path
-cd('/')
+% GBGABA BRAIN DATA ANALYSIS
+% OspreySetup.m adds paths to directories and folders required for 
+% pre-processing of MRS data.
 
-%add path to SPM12
-% addpath('/Users/Carolyn/Documents/MATLAB/spm12')
-addpath('/Volumes/GoogleDrive/My Drive/GitHub/CAP_Toolbox/spm12')
+% change into top dir so you can add matlab path
+ cd('/')
 
-%add folders and subfolders for Osprey to path
-addpath(genpath('/Volumes/GoogleDrive/My Drive/GitHub/osprey'))
+% add path to SPM12
+ addpath('/Users/bhismalab/Documents/GitHub/spm12')
 
-%add path to data
-addpath(genpath('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS'))
+% add folders and subfolders for Osprey to path
+ addpath(genpath('/Users/bhismalab/Documents/GitHub/osprey'))
 
-%change directory to the folder containing Osprey jobfiles
-cd('/Volumes/GoogleDrive/My Drive/GitHub/GutBrainGABA/MRS_Osprey_analysis')
+% add path to data
+ addpath(genpath('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS'))
 
+% change directory to the folder containing Osprey jobfiles
+ cd('/Users/bhismalab/Documents/GitHub/GutBrainGABA/MRS')
 
 

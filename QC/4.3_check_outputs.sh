@@ -1,27 +1,20 @@
 # Claudia Rodriguez-Sobstel
 # November 2022
-# Adapted from Carolyn McNabb https://github.com/CarolynMcNabb/GutBrainGABA
 
 # GBGABA BRAIN DATA ANALYSIS
-# 1.1_quit.sh will run quit commands to create complex data file and T1 image from MP2RAGE data
+# 4.3_check_outputs.sh will check the FEAT and pyfMRIqc outputs for pre-processed file.
 
 #!/bin/bash
 
 # specify paths:
 bids_path=/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS
-derivative_path=${bids_path}/derivatives/relaxometry/preprocessed
-json_path=/Volumes/gold/cinn/2020/gbgaba/scripts_claudia/code
-
-# go to bids path:
-cd $bids_path
-
+derivative_path=${bids_path}/derivatives/fMRI/preprocessed
 
 #---- for individual pre-processing (comment this section out for group pre-processing):
-
 # obtain user input (for individual pre-processing purposes),
 # to specify participant ID and session number:
-read -p "Participant ID (in BIDS format, with sub- in front, e.g. sub-W1002): " i
-read -p "Session ID, with ses- in front, e.g. ses-01: " ses
+read -p "Paricipant ID (in BIDS format, with sub- in front, e.g., sub-W1002): " i
+read -p "Session ID, with ses- in front, e.g., ses-01: " ses
 
 # for the specified participant, do the following:
 for i in ${i}; do
@@ -46,17 +39,18 @@ for i in ${i}; do
 #   for visit in ${!sessions[@]}; do
 #      ses=${sessions[$visit]}
 #-------------------------------------------------------------- group pre-processing ends here
-    
-        # go to derivatives directory:
-        cd ${derivative_path}/${i}/${ses}
-        
-        # create complex image:
-        echo "Creating complex image for ${i} ${ses}"
-            qi complex -m ${derivative_path}/${i}/${ses}/${i}_${ses}_mag.nii.gz -p ${derivative_path}/${i}/${ses}/${i}_${ses}_phase_rad.nii.gz -X ${derivative_path}/${i}/${ses}/${i}_${ses}_mp2_x.nii
-        
-        # create T1 and UNI images:
-        echo "Creating T1 and UNI images for ${i} ${ses}"
-            qi mp2rage ${derivative_path}/${i}/${ses}/${i}_${ses}_mp2_x.nii --json=${json_path}/mp2rage.json --beta=10000
+
+        # open the pyfMRIqc output:
+        echo "Opening pyfMRIqc output for ${i}_${ses}"
+            open ${bids_path}/${i}/${ses}/func/pyfMRIqc_${i}_${ses}_task-rest_bold/pyfMRIqc_HTML_${i}_${ses}_task-rest_bold.html
+
+        echo "Opened pyfMRIqc output for ${i}_${ses}"
+
+        # open the FEAT preproc output:
+        echo "Opening FEAT output for ${i}_${ses}"
+            open ${derivative_path}/${i}/${ses}/func/${i}_${ses}_FEATpreproc.feat/report_reg.html
+
+        echo "Opened FEAT output for ${i}_${ses}"
 
     done
     

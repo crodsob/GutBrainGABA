@@ -1,16 +1,50 @@
-%% QualityCheck.m
-% Carolyn McNabb 2021
-%   This script will run the Osprey preprocessing pipeline in MATLAB, without having to use the Osprey GUI.
-%   To view the output, you will need to load the MRSCont object into the GUI
+% Carolyn McNabb
+% September 2021
 
-%Voxel of interest for quality check
-VOI = 'MC'; %options are OCC and MC
+% GBGABA BRAIN DATA ANALYSIS
+% QualityCheck.m will run the Osprey preprocessing pipeline in MATLAB.
+% It will use the data specified in the quality_check_MC.m or
+% quality_check_OCC.m functions for individual preprocessing,
+% or from group_analysis_MC.m or group_analysis_OCC.m for group preprocessing.
 
+% Define voxel of interest for quality check:
+% (options are MC and OCC).
+% NOTE: this is only required for individual quality checks.
+ VOI = ['OCC']; 
 
-[MRSCont] = OspreyJob(sprintf('quality_check_%s.m',VOI))
-[MRSCont] = OspreyLoad(MRSCont)
-[MRSCont] = OspreyProcess(MRSCont)
-[MRSCont] = OspreyCoreg(MRSCont)
-[MRSCont] = OspreySeg(MRSCont)
-[MRSCont] = OspreyFit(MRSCont)
-[MRSCont] = OspreyQuantify(MRSCont)
+% Run the pre-processing:
+%%% (comment out depending on individual or group pre-processing)
+%%% for individual pre-processing, run:
+ [MRSCont] = OspreyJob(sprintf('quality_check_%s.m', VOI));
+%%% for group MC pre-processing, run:
+%%% [MRSCont] = OspreyJob(sprintf('group_analysis_MC.m'));
+%%% or for OCC, run:
+%%% %%% [MRSCont] = OspreyJob(sprintf('group_analysis_OCC.m'));
+
+% Run the Osprey Workflow as follows:
+
+% Load the raw metabolite and water reference data:
+ [MRSCont] = OspreyLoad(MRSCont);
+
+% Translate the raw, un-aligned, un-average data into spectra for modeling:
+ [MRSCont] = OspreyProcess(MRSCont);
+
+% Create a binary voxel mask and coregister this to structural image, in
+% order to reproduce original voxel placement:
+ [MRSCont] = OspreyCoreg(MRSCont);
+
+% Segment structural image into gray matter (GM), white matter (WM), and
+% cerebrospinal fluid (CSF). Overlay coregistered voxel mask with GM, WM 
+% and CSF probability maps and calculate fractional tissue volumes for 
+% GM, WM, and CSF:
+ [MRSCont] = OspreySeg(MRSCont);
+
+% Model the processed spectra:
+ [MRSCont] = OspreyFit(MRSCont);
+
+% Calculate quantitative outputs:
+ [MRSCont] = OspreyQuantify(MRSCont);
+
+% Provide summary visualisations:
+ [MRSCont] = OspreyOverview(MRSCont);
+

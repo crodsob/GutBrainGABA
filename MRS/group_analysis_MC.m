@@ -2,14 +2,10 @@
 % September 2021
 
 % GBGABA BRAIN DATA ANALYSIS
-% quality_check_OCC.m will prepare for individual pre-processing of occipital cortex MRS data.
+% group_analysis_MC.m will prepare for group pre-processing of motorcortex MRS data.
 % Essentially, this writes a function to describe an Osprey job. 
 % This specifies which MRS metabolite, water, and structural data to use, 
 % where to store the pre-processed data, and stipulates additional processing options. 
-
-% Define subject and session for quality check:
- sub = 'sub-W2AB054';
- ses = 'ses-03';
 
 %   A valid Osprey job contains four distinct classes of items:
 %       1. basic information on the MRS sequence used
@@ -156,43 +152,87 @@ opts.fit.FWHMcoMM3              = 14;
 % When using single-average Siemens RDA or DICOM files, specify their
 % folders instead of single files!
 
-% Specify metabolite data
-% (MANDATORY)
-files       = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/motorcortex/mega-press/%s_%s_mega-press.dat', sub, ses, sub, ses)};
+% Clear existing files
+clear files files_ref files_w files_nii 
 
-% Specify water reference data for eddy-current correction (same sequence as metabolite data!)
-% (OPTIONAL)
-% Leave empty for GE P-files (.7) - these include water reference data by
-% default.
-files_ref   = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/occipital/mega-press_ref/%s_%s_mega-press_ref.dat', sub, ses, sub, ses)};
+% Data folder in BIDS format
+% The filparts(which()) comment is needed to find the data on your machine. If you set
+% up the jobFile for your own data you can set a direct path to your data
+% folder e.g., data_folder = /Volumes/MyProject/data/'
 
-% Specify water data for quantification (e.g. short-TE water scan)
-% (OPTIONAL)
-files_w     = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/occipital/water/%s_%s_water.dat', sub, ses, sub, ses)};
-           
-% Specify metabolite-nulled data for quantification
-% (OPTIONAL)
-files_mm     = {};  
+data_folder = '/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS'; 
 
-% Specify T1-weighted structural imaging data
-% (OPTIONAL)
-% Link to single NIfTI (*.nii) files for Siemens and Philips data
-% Link to DICOM (*.dcm) folders for GE data
-files_nii   = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/anat/%s_%s_T1w.nii.gz', sub, ses, sub, ses)};
+% The following lines perform an automated set-up of the jobFile which
+% takes advatage of the BIDS foramt. If you are not using BIDS (highly
+% recommended) you can look at the definitions below the loop to see how to
+% set up direct path links to your data.
+
+subs       = dir(data_folder);
+subs(1:2)  = [];
+subs       = subs([subs.isdir]);
+subs       = subs(contains({subs.name},'sub'));
+counter    = 1;
+
+for kk = 1:length(subs)
+    % Loop over sessions
+    sess        = dir([subs(kk).folder filesep subs(kk).name]);
+    sess(1:2)   = [];
+    sess        = sess([sess.isdir]);
+    sess        = sess(contains({sess.name},'ses'));
+    for ll = 1%:length(sess)
+                
+        % Specify metabolite data
+        % (MANDATORY)
+        dir_metabolite    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'motorcortex' filesep 'mega-press' filesep '*.dat']);
+        if ~isempty(dir_metabolite)
+            files(counter)      = {[dir_metabolite(end).folder filesep dir_metabolite(end).name]};
+
+            % Specify water reference data for eddy-current correction (same sequence as metabolite data!)
+            % (OPTIONAL)
+            % Leave empty for GE P-files (.7) - these include water reference data by
+            % default.
+            dir_ref    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'motorcortex' filesep  'mega-press_ref' filesep '*.dat']);
+            files_ref(counter)  = {[dir_ref(end).folder filesep dir_ref(end).name]};
+
+            % Specify water data for quantification (e.g. short-TE water scan)
+            % (OPTIONAL)
+            dir_w    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'motorcortex' filesep 'water' filesep '*.dat']);
+            files_w(counter)  = {[dir_w(end).folder filesep dir_w(end).name]};
+
+            % Specify metabolite-nulled data for quantification
+            % (OPTIONAL)
+            files_mm     = {};  
+
+           % Specify T1-weighted structural imaging data
+            % (OPTIONAL)
+            % Link to single NIfTI (*.nii) files for Siemens and Philips data
+            % Link to DICOM (*.dcm) folders for GE data
+            files_nii(counter)  = {[sess(ll).folder filesep sess(ll).name filesep 'anat' filesep subs(kk).name '_' sess(ll).name '_T1w.nii.gz']};        
+            counter             = counter + 1;
+
+        end
+    end
+end
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 4. SPECIFY STAT FILE %%%
+% Supply location of a csv file, which contains possible correlation
+% measures and group variables. Each column must start with the name of the
+% measure. For the grouping variable use 'group' and numbers between 1 and
+% the number of included groups. If no group is supplied the data will be
+% treated as one group. (You can always use the direct path)
 
-
+%file_stat = fullfile('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/GLMs/GLM_faecalLCMS.csv');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 4. SPECIFY OUTPUT FOLDER %%
+%%% 5. SPECIFY OUTPUT FOLDER %%
 % The Osprey data container will be saved as a *.mat file in the output
 % folder that you specify below. In addition, any exported files (for use
 % with jMRUI, TARQUIN, or LCModel) will be saved in sub-folders.
 
-% Specify output folder
+% Specify output folder (you can always use the direct path)
 % (MANDATORY)
-outputFolder = sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/preprocessed/%s/%s/%s_%s_OCC', sub, ses, sub, ses);
+outputFolder = '/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/group_analysis_MC';
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

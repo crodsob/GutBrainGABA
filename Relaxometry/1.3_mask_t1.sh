@@ -10,10 +10,12 @@ bids_path=/storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS
 derivative_path=${bids_path}/derivatives/relaxometry/preprocessed
 
 cd $bids_path
-subjects=( $(ls -d sub-* )) 
+#subjects=( $(ls -d sub-* ))
 
-for sub in ${!subjects[@]}; do 
-    i=${subjects[$sub]}
+#for sub in ${!subjects[@]}; do
+for sub in sub-W1016 sub-W1022; do
+    i=$sub
+    #i=${subjects[$sub]}
     s=${i//$"sub-"/}
     
     cd ${bids_path}/${i}
