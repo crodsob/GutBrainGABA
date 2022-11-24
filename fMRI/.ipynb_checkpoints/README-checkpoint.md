@@ -3,7 +3,7 @@ Carolyn McNabb 2021 - Find me at https://github.com/CarolynMcNabb</br>
 fMRI analysis uses FSL 6.0.1 on an ubuntu MATE 16.04 operating system (8GB).</br> 
 All analysis scripts are available [here](https://github.com/CarolynMcNabb/GutBrainGABA/tree/main/fMRI)
 
-
+___
 The first time you run these scripts, whether on the virtual machine (VM) or on MacOS, you will need to make the scripts executable. To do this, run the following command in the terminal, replacing `script_name` with the relavant script name and `path_to_script` with the relevant path to the directory where your scripts are kept. Note that this is likely to be a different path for the VM and MacOS. You only have to do this **ONCE** for each script.
 ```
 chmod u+x path_to_script/script_name
@@ -41,7 +41,7 @@ For this step, you need to have put the FEATpreproc.fsf file in a folder that yo
 ```
 #### CHECK FEAT OUTPUT BEFORE PROCEEDING – 
 ```
-firefox /storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/fMRI/preprocessed/sub-W1008/ses-01/func/sub-W1008_ses-01_FEATpreproc.feat/report.html
+4.3_check_outputs.sh
 ```
 ##### Exclude any participant whose motion parameters excede:
 Absolute motion >1.5 mm<br/>
