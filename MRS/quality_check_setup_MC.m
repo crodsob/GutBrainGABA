@@ -2,7 +2,7 @@
 % September 2021
 
 % GBGABA BRAIN DATA ANALYSIS
-% quality_check_OCC.m will prepare for individual pre-processing of occipital cortex MRS data.
+% quality_check_setup_MC.m will prepare for individual pre-processing of motorcortex MRS data.
 % Essentially, this writes a function to describe an Osprey job. 
 % This specifies which MRS metabolite, water, and structural data to use, 
 % where to store the pre-processed data, and stipulates additional processing options. 
@@ -164,11 +164,11 @@ files       = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/mot
 % (OPTIONAL)
 % Leave empty for GE P-files (.7) - these include water reference data by
 % default.
-files_ref   = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/occipital/mega-press_ref/%s_%s_mega-press_ref.dat', sub, ses, sub, ses)};
+files_ref   = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/motorcortex/mega-press_ref/%s_%s_mega-press_ref.dat', sub, ses, sub, ses)};
 
 % Specify water data for quantification (e.g. short-TE water scan)
 % (OPTIONAL)
-files_w     = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/occipital/water/%s_%s_water.dat', sub, ses, sub, ses)};
+files_w     = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/mrs/motorcortex/water/%s_%s_water.dat', sub, ses, sub, ses)};             
            
 % Specify metabolite-nulled data for quantification
 % (OPTIONAL)
@@ -192,7 +192,7 @@ files_nii   = {sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/%s/%s/anat/%s
 
 % Specify output folder
 % (MANDATORY)
-outputFolder = sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/preprocessed/%s/%s/%s_%s_OCC', sub, ses, sub, ses);
+outputFolder = sprintf('/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/preprocessed/%s/%s/%s_%s_MC', sub, ses, sub, ses);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

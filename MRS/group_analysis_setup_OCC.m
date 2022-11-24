@@ -2,14 +2,11 @@
 % September 2021
 
 % GBGABA BRAIN DATA ANALYSIS
-% group_analysis_MC.m will prepare for group pre-processing of motorcortex MRS data.
+% group_analysis_setup_OCC.m will prepare for group pre-processing of occipital cortex MRS data.
 % Essentially, this writes a function to describe an Osprey job. 
 % This specifies which MRS metabolite, water, and structural data to use, 
 % where to store the pre-processed data, and stipulates additional processing options. 
 
-%% GroupAnalysis.m
-%   This function describes an Osprey job defined in a MATLAB script.
-%
 %   A valid Osprey job contains four distinct classes of items:
 %       1. basic information on the MRS sequence used
 %       2. several settings for data handling and modeling
@@ -163,7 +160,7 @@ clear files files_ref files_w files_nii
 % up the jobFile for your own data you can set a direct path to your data
 % folder e.g., data_folder = /Volumes/MyProject/data/'
 
-data_folder = '/Volumes/research/cinn/2020/gbgaba/GBGABA_BIDS'; 
+data_folder = '/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS'; 
 
 % The following lines perform an automated set-up of the jobFile which
 % takes advatage of the BIDS foramt. If you are not using BIDS (highly
@@ -186,7 +183,7 @@ for kk = 1:length(subs)
                 
         % Specify metabolite data
         % (MANDATORY)
-        dir_metabolite    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'motorcortex' filesep 'mega-press' filesep '*.dat']);
+        dir_metabolite    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'occipital' filesep 'mega-press' filesep '*.dat']);
         if ~isempty(dir_metabolite)
             files(counter)      = {[dir_metabolite(end).folder filesep dir_metabolite(end).name]};
 
@@ -194,12 +191,12 @@ for kk = 1:length(subs)
             % (OPTIONAL)
             % Leave empty for GE P-files (.7) - these include water reference data by
             % default.
-            dir_ref    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'motorcortex' filesep  'mega-press_ref' filesep '*.dat']);
+            dir_ref    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'occipital' filesep  'mega-press_ref' filesep '*.dat']);
             files_ref(counter)  = {[dir_ref(end).folder filesep dir_ref(end).name]};
 
             % Specify water data for quantification (e.g. short-TE water scan)
             % (OPTIONAL)
-            dir_w    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'motorcortex' filesep 'water' filesep '*.dat']);
+            dir_w    = dir([sess(ll).folder filesep sess(ll).name filesep 'mrs' filesep 'occipital' filesep 'water' filesep '*.dat']);
             files_w(counter)  = {[dir_w(end).folder filesep dir_w(end).name]};
 
             % Specify metabolite-nulled data for quantification
@@ -236,6 +233,6 @@ end
 
 % Specify output folder (you can always use the direct path)
 % (MANDATORY)
-outputFolder = '/Volumes/research/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/group_analysis_MC';
+outputFolder = '/Volumes/gold/cinn/2020/gbgaba/GBGABA_BIDS/derivatives/MRS/analysis/group_analysis_OCC';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -4,6 +4,7 @@ All analysis scripts are available [here](https://github.com/CarolynMcNabb/GutBr
 
 **This is work in progress and could be improved with the addition of techniques suggested by [Haast et al. (2016)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5114304/).**
 
+---
 The first time you run these scripts, whether on the virtual machine (VM) or on MacOS, you will need to make the scripts executable. To do this, run the following command in the terminal, replacing `script_name` with the relavant script name and `path_to_script` with the relevant path to the directory where your scripts are kept. Note that this is likely to be a different path for the VM and MacOS. You only have to do this **ONCE** for each script.
 ```
 chmod u+x path_to_script/script_name
