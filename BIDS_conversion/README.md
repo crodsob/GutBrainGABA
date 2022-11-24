@@ -28,7 +28,6 @@ export PATH
 ```
 rm -r ~/.mozilla #to clear any open firefox applications
 ```
---
 
 ## Convert dicoms to BIDS format
 N.B. Conversion of diffusion data to BIDS format may later be updated to use ADWI-BIDS https://arxiv.org/pdf/2103.14485.pdf 
@@ -59,15 +58,15 @@ t1_mprage_DC_sag_HCP_256_32ch
     </tr>
 </table>
 
-#### Initial environment setup
-##### 2.1. Install python 3 and dcm2bids
+### Initial environment setup
+#### 2.1. Install python 3 and dcm2bids
 In terminal, type:
 ```
 module load anaconda
 sudo apt install python3-pip
 pip install dcm2bids
 ```
-##### 2.2. Set up environment for dcm2bids 
+#### 2.2. Set up environment for dcm2bids 
 ```
 sudo apt install gedit
 gedit environment.yml 
@@ -97,36 +96,36 @@ source activate /storage/shared/research/cinn/2020/gbgaba/scripts_claudia/conda_
 cd /storage/shared/research/cinn/2020/gbgaba/
 ```
 
-#### If environment has already been setup
-##### 2.1. Add path to dcm2bids conversion script
+### If environment has already been setup
+#### 2.1. Add path to dcm2bids conversion script
 ```
 PATH=$PATH:/storage/shared/research/cinn/2020/gbgaba/scripts_claudia/
 export PATH
 ```
 
-##### 2.2. Run the dcm2bids conversion script
+#### 2.2. Run the dcm2bids conversion script
+Note: You will be prompted to enter the participant ID and session number WITHOUT 'sub-' and 'ses-' in front. 
+Remember that if the participant is in WP1, their ID will be W1088, or something to that effect. 
+If the participant is in WP2, their ID will be W2AB065 or W2BA042, or something to that effect. 
+The session number will be 01, 02, 03, or 04. 
+
+```
+0.0_dcm2bids.sh
+```
+
 The script will:
 - activate the conda environment, 
 - test whether dcm2bids is working, and
 - convert the raw data to BIDS format.
 
-Note: You will be prompted to enter the participant ID and session number. 
+## Check your json files
+### You can use the dcm2bids helper function to look at your json files (associated with each of your nifti files - these will be in the tmp_dcm2bids folder).
 ```
-0.0_dcm2bids.sh
-```
-
-
-2.3. Convert raw data to BIDS format with dcm2bids
-First, test that dcm2bids is working by typing
-```
-dcm2bids --help
-```
-Use the dcm2bids helper function to look at your json files (associated with each of your nifti files - these will be in the tmp_dcm2bids folder).
-```
-dcm2bids_helper -d /storage/shared/research/cinn/2020/gbgaba/raw/GBGABA_pilot2
+dcm2bids_helper -d /storage/shared/research/cinn/2020/gbgaba/GBGABA_BIDS/tmp_dcm2bids
 ```
 
-Next, make sure dcm2bids_config.json contains the following:
+### Next, make sure dcm2bids_config.json contains the following:
+This dcm2bids_config.json file is stored in /storage/shared/research/cinn/2020/gbgaba/scripts_claudia/code
 ```
 {
     "descriptions": [
@@ -246,27 +245,13 @@ Next, make sure dcm2bids_config.json contains the following:
 
 ```
 
-
-Then type into terminal (within the conda environment) - MAKING SURE TO REPLACE THE SUBJECT ID AND SESSION ID:
-```
-dcm2bids -d /storage/shared/research/cinn/2020/gbgaba/raw/GBGABA_W0001/ -p W0001 -s 01 -c /storage/shared/research/cinn/2020/gbgaba/scripts/code/dcm2bids_config.json 
-```
-
-Or if the subject is in Work Package 2:
-```
-dcm2bids -d /storage/shared/research/cinn/2020/gbgaba/raw/GBGABA_W2AB002S1/ -p W2AB002 -s 01 -c /storage/shared/research/cinn/2020/gbgaba/scripts/code/dcm2bids_config.json 
-```
-
-And Repeat for every subject
-
-
-##TO DO
+## TO DO
 Add modality agnostic file (dataset_description.json) https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html 
 
 
 	
 ### BIDS validation
-2.4. Validate BIDS format using BIDS validator https://pypi.org/project/bids-validator 
+#### 2.3. Validate BIDS format using BIDS validator https://pypi.org/project/bids-validator 
 In terminal window (not in python) type:
 ```
 pip install bids_validator
@@ -274,7 +259,7 @@ python3.7 2.1_validate_bids.py
 ```
 OR go to https://bids-standard.github.io/bids-validator/ and import bids parent folder (folder containing all subjects)
 
-2.5 Finalised folder structure, including directories for analyses
+#### 2.4 Finalised folder structure, including directories for analyses
 ```
 /storage/shared/research/cinn/2020/gbgaba/
    GBGABA_BIDS/
